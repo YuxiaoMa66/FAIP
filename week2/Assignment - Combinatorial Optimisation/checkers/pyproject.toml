@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "faip24-checkers"
+version = "0.1.0"
+description = "Checker scripts for FAIP course assignments"
+authors = ["Konstantin Sidorov <k.sidorov@tudelft.nl>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+minizinc = {extras = ["dzn"], version = "^0.9.0"}
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
