@@ -27,11 +27,26 @@ solve minimize k;
 % Constraints
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Constraint 1: Each node should have exactly 1 colour
+constraint forall(i in Nodes) (
+    sum(j in Nodes) (colour[i, j]) = 1
+);
+
 
 % Constraint 2: Neighbouring nodes cannot have the same colour
 % HINT: Try to think about each neighbour pair
+constraint forall(i in 1..NUM_EDGES) (
+    forall(j in Nodes) (
+        colour[edges[i,1], j] + colour[edges[i,2], j] <= 1
+    )
+);
+
 
 % Constraint 3: k is the number of used colours
+constraint k = sum(c in Nodes) (used_colour[c]);
+constraint forall(c in Nodes) (
+    used_colour[c] = max(i in Nodes) (colour[i, c])
+);
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Output
