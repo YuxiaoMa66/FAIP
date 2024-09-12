@@ -34,3 +34,4 @@ constraint forall(s in TeamSkills) (
 
 % Constraint 2: the total cost of all the chosen people
 constraint total_cost = sum(i in 1..NUM_PEOPLE) (chosen[i] * costs[i]);
+
